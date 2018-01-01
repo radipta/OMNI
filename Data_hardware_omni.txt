@@ -1,0 +1,68 @@
+
+***************	TIMER REQUIREMENT ***********************************************
+
+ TIM 4 & 12 for PWM motor
+ TIM 7 for sampling rpm
+ TIM 2 -> encoder A
+ TIM 3 -> encoder B
+ TIM 5 -> encoder C
+
+
+***************	PIN OUT *********************************************************
+
+ ENCODER => VCC : 5v now but will try 3v
+
+ enc motor(3) = A15 - B3		TIM.2
+ enc motor(2) = B4 - B5			TIM.3
+ enc motor(1) = A0 - A1			TIM.5
+
+
+PWM motor 1	= B14 - B15		TIM.12
+PWM motor 2	= D12 - D13		TIM.4
+PWM motor 3 	= D14 - D15		TIM.4
+
+Serial comm:
+	TX USB TTL	= PB7
+	RX USB TTL 	= PB6
+
+
+tHAT NEED VCC :
+encoder
+driver motor
+sensor
+
+sensor :  X = A3 & Y = A2 (2 pin adc)
+
+the format of usart input is : Axx,xx,Bxx,xx,Cxx,xx#
+which x is number, and dont forget the hashtag in the end
+
+
+
+
+***************	ENCODER + MOTOR PINOUT *****************************************
+
+	---------------------------------------------------------
+	\	o	o	o	o	o	o	/
+	 -------------------------------------------------------
+		GND   DATA 1   DATA 2   VCC     IN 1    IN 2	
+
+***************	TO STM32F4 PINOUT **********************************************
+to STM :					to driver :
+
+motor 1		gnd	A1	A0	5V	out1	out2
+motor 2		gnd	B5	B4	5V	out1	out2
+motor 3 	gnd	B3	A15	5V	out1	out2
+							
+
+***************	PWM to STM32F4 *************************************************
+		_________________________________________
+		|	VCC	IN 1	IN 2	GND	|
+		|	 O	 O	 O	 O	|
+		|_______________________________________|
+
+PWM
+motor 1			5V	D.14	D.15	gnd
+motor 2 		5V	D.12	D.13	gnd
+motor 3			5V	B.14	B.15	gnd
+
+ 
